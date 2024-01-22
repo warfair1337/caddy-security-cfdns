@@ -1,13 +1,22 @@
-name: Publish Docker Image
+name: Publish Docker image to GHCR
 
 on:
   push:
     branches: [ main ]
-  release:
-    types:
-      - published
         
 jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and push the image
+        run: | 
+          docker login --username warfair1337 --password ${{ secrets.GHCR_PAT }} ghcr.io
+          docker build . --tag ghcr.io/warfair1337/caddy-sec-cfdns:latest
+          docker push ghcr.io/warfair1337/caddy-sec-cfdns:latest
+
+
+
 
   build:
     if: "!contains(github.event.head_commit.message, 'skip build')"
