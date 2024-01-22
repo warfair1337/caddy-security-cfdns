@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>caddy-security-cfdns</Name>
-  <Repository>ghcr.io/warfair1337/caddy-security-cfdns:latest</Repository>
-  <Registry/>
+  <Repository>warfair1337/caddy-security-cfdns</Repository>
+  <Registry>https://ghcr.io/warfair1337/caddy-security-cfdns:latest</Registry>
   <Network>br0</Network>
   <MyIP>1.2.3.4</MyIP>
   <Shell>sh</Shell>
@@ -22,6 +22,6 @@
   <DonateLink/>
   <Requires/>
   <Config Name="Config" Target="/config" Default="/mnt/user/appdata/caddy/config" Mode="rw" Description="Path to config folder" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddy/config</Config>
-  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/caddy/data" Mode="rw" Description="Path to where Caddy writes certificate and logs" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddy/data</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/caddy/data" Mode="rw" Description="Path to where Caddy writes certificates and logs" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddy/data</Config>
   <Config Name="Caddyfile" Target="/etc/caddy/Caddyfile" Default="/mnt/user/appdata/caddy/Caddyfile" Mode="rw" Description="Path to Caddyfile. This file must exist on first run" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddy/Caddyfile</Config>
 </Container>
