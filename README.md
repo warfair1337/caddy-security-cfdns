@@ -7,4 +7,5 @@ This image is compiled with the following addons:
 * Cloudflare
 * Caddy Security
 
+The Unraid templates assumes EntraID (previously Azure AD) is being used as the Identity Provider (IdP)
 Documentation is WIP.
