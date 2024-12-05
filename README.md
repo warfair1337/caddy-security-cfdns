@@ -10,11 +10,16 @@ This image is compiled with the following addons:
 The Unraid templates assumes EntraID (previously Azure AD) is being used as the Identity Provider (IdP)
 Documentation is WIP.
 
+Docker paths
 /local/path/caddy/config:/config
 /local/path/caddy/data:/data
 /local/path/caddy/Caddyfile:/etc/caddy/Caddyfile
+
+API-token for ACME certificate issuance using Cloudflare
 CLOUDFLARE_API_TOKEN
-AZURE_TENANT_ID
-AZURE_CLIENT_ID
-AZURE_CLIENT_SECRET
+
+Tenant ID, client id and client secret
+ENTRA_TENANT_ID
+ENTRA_CLIENT_ID
+ENTRa_CLIENT_SECRET
 
