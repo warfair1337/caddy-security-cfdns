@@ -1,0 +1,91 @@
+{
+        email admin@domain.ext
+        acme_ca https://acme-v02.api.letsencrypt.org/directory
+        security {
+                oauth identity provider azure {
+                        realm azure
+                        driver azure
+                        client_id {env.ENTRA_CLIENT_ID}
+                        client_secret {env.ENTRA_CLIENT_SECRET}
+                        tenant_id {env.ENTRA_TENANT_ID}
+                        scopes openid email profile
+                }
+
+                authentication portal myportal {
+                        enable identity provider azure
+                        cookie domain domain.ext
+                        crypto default token lifetime 86400
+                        ui {
+                                links {
+                                        "My Token" "/whoami" icon "las la-user"
+                                }
+                        }
+                        transform user {
+                                # Matching a specific user
+				# match email user@domain.ext
+
+				# Matching a domain 
+                                # suffix match email @domain.ext
+
+				# Mathing an IdP
+                                # exact match sub czuAkCHc2yc1Yls3ayA7tVEf3HXq7VcM3fTC7MK-7b8
+                                match origin azure
+                                action add role prefix/user
+                                # ui link "My Settings" /settings icon "las la-cog"
+                        }
+                }
+
+                authorization policy defaultpolicy {
+                        set auth url https://auth.domain.ext/
+                        allow roles prefix/user
+                }
+
+                authorization policy otherpolicy {
+                        set auth url https://auth.domain.ext/oauth2/azure
+                        allow roles entrarole
+                }
+        }
+}
+
+# Authentication portal
+auth.domain.ext {
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        }
+        route {
+                authenticate with myportal
+        }
+}
+
+# Service 1 cert issued using cloudflare
+service1.domain.ext {
+        reverse_proxy 10.1.1.1:8080
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        }
+}
+
+# Service 2 cert issued using cloudflare
+service2.domain.ext {
+        reverse_proxy https://10.2.2.2 {
+                transport http {
+                        tls
+                        tls_insecure_skip_verify
+                }
+        }
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        }
+}
+
+# Service 3 cert issued and access control with EntraID role
+service3.domain.ext {
+        reverse_proxy 10.3.3.3:9000
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        }
+        route {
+                authorize with policy_otherpolicy
+        }
+}
+
