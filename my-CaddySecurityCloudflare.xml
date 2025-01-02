@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>CaddySecurityCloudflare</Name>
+  <Repository>ghcr.io/warfair1337/caddy-security-cfdns:latest</Repository>
+  <Registry/>
+  <Network>eth0</Network>
+  <MyIP>1.2.3.4</MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview/>
+  <Category/>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://dqah5woojdp50.cloudfront.net/original/2X/f/ff87f3ea930883f5a802c0e04d43f8b743d0ab89.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1707849747</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/caddy/config" Mode="rw" Description="Path to config folder" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddywan/config</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/caddy/data" Mode="rw" Description="Path to where Caddy writes certificate and logs" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddywan/data</Config>
+  <Config Name="Caddyfile" Target="/etc/caddy/Caddyfile" Default="/mnt/user/appdata/caddy/Caddyfile" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/caddywan/Caddyfile</Config>
+  <Config Name="Cloudflare API-token" Target="CLOUDFLARE_API_TOKEN" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Azure Tenant ID" Target="AZURE_TENANT_ID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Azure Client ID" Target="AZURE_CLIENT_ID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Azure Client Secret" Target="AZURE_CLIENT_SECRET" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="true"/>
+</Container>
