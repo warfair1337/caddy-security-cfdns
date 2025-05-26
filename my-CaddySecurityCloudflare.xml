@@ -4,7 +4,7 @@
   <Repository>ghcr.io/warfair1337/caddy-security-cfdns:latest</Repository>
   <Registry/>
   <Network>eth0</Network>
-  <MyIP>1.2.3.4</MyIP>
+  <MyIP>4.3.2.1</MyIP>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support/>
