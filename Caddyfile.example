@@ -1,5 +1,5 @@
 {
-        email admin@domain.ext
+        email user@domain.ext
         acme_ca https://acme-v02.api.letsencrypt.org/directory
         security {
                 oauth identity provider azure {
